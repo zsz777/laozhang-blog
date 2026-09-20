@@ -1,0 +1,37 @@
+﻿
+> laozhang-blog@0.1.0 build
+> astro build
+
+[34m鈻?Astro collects anonymous usage data.[39m
+  This information helps us improve Astro.
+  Run "astro telemetry disable" to opt-out.
+  [36m[4mhttps://astro.build/telemetry[24m[39m
+
+[2m13:12:23[22m [34m[content][39m Syncing content
+[2m13:12:23[22m [34m[content][39m Synced content
+[2m13:12:23[22m [34m[types][39m Generated [2m2.16s[22m
+[2m13:12:23[22m [34m[build][39m output: [34m"static"[39m
+[2m13:12:23[22m [34m[build][39m mode: [34m"static"[39m
+[2m13:12:23[22m [34m[build][39m directory: [34mD:\WorkBuddy\laozhang-blog\dist\[39m
+[2m13:12:23[22m [34m[build][39m Collecting build info...
+[2m13:12:23[22m [34m[build][39m [32m鉁?Completed in 2.19s.[39m
+[2m13:12:23[22m [34m[build][39m Building static entrypoints...
+[2m13:12:26[22m [34m[vite][39m [32m鉁?built in 1.98s[39m
+[2m13:12:26[22m [34m[build][39m [32m鉁?Completed in 2.06s.[39m
+
+[42m[30m generating static routes [39m[49m
+[2m13:12:26[22m [32m鈻?[39m src/pages/about.astro
+[2m13:12:26[22m   [34m鈹斺攢[39m [2m/about/index.html[22m [2m(+37ms)[22m 
+[2m13:12:26[22m [32m鈻?[39m src/pages/index.astro
+[2m13:12:26[22m   [34m鈹斺攢[39m [2m/index.html[22m [2m(+25ms)[22m 
+[2m13:12:26[22m [32m鈻?[39m src/pages/posts/[id].astro
+[2m13:12:26[22m   [34m鈹溾攢[39m [2m/posts/change-ledger/index.html[22m [2m(+36ms)[22m 
+[2m13:12:26[22m   [34m鈹溾攢[39m [2m/posts/mes-7-pits/index.html[22m [2m(+55ms)[22m 
+[2m13:12:26[22m   [34m鈹斺攢[39m [2m/posts/ai-qc-truth/index.html[22m [2m(+51ms)[22m 
+[2m13:12:26[22m [35m位[39m src/pages/rss.xml.js
+[2m13:12:26[22m   [34m鈹斺攢[39m [2m/rss.xml[22m [2m(+37ms)[22m 
+[2m13:12:26[22m [32m鉁?Completed in 352ms.
+[39m
+[2m13:12:31[22m [34m[build][39m 5 page(s) built in [1m9.39s[22m
+[2m13:12:31[22m [34m[build][39m [1mComplete![22m
+exit=0

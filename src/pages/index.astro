@@ -1,0 +1,90 @@
+---
+import Page from '../layouts/Page.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const topics = ['纺织数字化', 'MES 实施', 'AI 落地', '项目交付', '方案与销售'];
+const topicCounts = topics.map((t) => ({
+  name: t,
+  count: posts.filter((p) => p.data.topic === t).length || 0,
+}));
+const fmt = (d: Date) =>
+  `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+---
+
+<Page>
+  <!-- Hero -->
+  <section class="wrap hero">
+    <div class="kicker">
+      <span class="kicker-dot"></span>
+      <span class="kicker-label">FIELD NOTES · 纺织制造数字化</span>
+    </div>
+    <h1>把纺织工厂的数字化经验，写成能用的东西。</h1>
+    <p class="hero-sub">
+      ERP / MES 实施、AI 落地、项目交付——一个在车间里做方案、跑现场的人，把踩过的坑和想明白的事写在这里。
+    </p>
+    <div class="hero-meta">
+      <span>广东佛山 · 纺织制造 · 数字化方案</span>
+      <span>共 {posts.length} 篇笔记 · 每周更新 1–2 篇</span>
+    </div>
+  </section>
+
+  <!-- 主题索引 -->
+  <section class="wrap section" id="topics">
+    <div class="section-head">
+      <h2 class="section-title">主题索引</h2>
+      <span class="row-date">按主题浏览全部笔记</span>
+    </div>
+    <div class="topics-grid">
+      {topicCounts.map((t, i) => (
+        <div class="topic">
+          <div class="topic-index">{String(i + 1).padStart(2, '0')}</div>
+          <div class="topic-name">{t.name}</div>
+          <div class="topic-count">{t.count} 篇</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <div class="wrap"><hr style="border:none;border-top:1px solid var(--rule)" /></div>
+
+  <!-- 最近更新 -->
+  <section class="wrap section" id="latest">
+    <div class="section-head">
+      <h2 class="section-title">最近更新</h2>
+      <a class="section-link" href="/#topics">查看全部 {posts.length} 篇</a>
+    </div>
+    {posts.map((post) => (
+      <a class="article-row" href={`/posts/${post.id}/`}>
+        <div class="row-meta">
+          <span class="row-date">{fmt(post.data.date)}</span>
+          <span class="row-topic">{post.data.topic}</span>
+        </div>
+        <div class="row-body">
+          <h3 class="row-title">{post.data.title}</h3>
+          <p class="row-excerpt">{post.data.excerpt}</p>
+          <div class="row-readtime">{post.data.readTime}</div>
+        </div>
+      </a>
+    ))}
+  </section>
+
+  <!-- 订阅 -->
+  <section class="band" id="subscribe">
+    <div class="wrap band-inner">
+      <div class="band-copy">
+        <h2 class="band-title">订阅「车间笔记」</h2>
+        <p class="band-caption">
+          每周 1–2 篇，关于纺织制造与 AI 落地的一手经验。不灌水，随时可退订。
+        </p>
+      </div>
+      <form class="band-form" onsubmit="event.preventDefault(); this.querySelector('.band-input').value=''; alert('已收到，上线后接入邮件订阅服务。');">
+        <input class="band-input" type="email" placeholder="你的邮箱地址" required />
+        <button class="band-btn" type="submit">订阅</button>
+      </form>
+    </div>
+  </section>
+</Page>

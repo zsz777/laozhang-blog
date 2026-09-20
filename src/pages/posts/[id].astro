@@ -1,0 +1,33 @@
+---
+import Page from '../../layouts/Page.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = (d: Date) =>
+  `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+---
+
+<Page title={`${post.data.title} · 老张`} description={post.data.excerpt}>
+  <article class="article-page">
+    <div class="article-kicker">{post.data.topic}</div>
+    <h1 class="article-title">{post.data.title}</h1>
+    <div class="article-meta">
+      <span>{fmt(post.data.date)}</span>
+      <span>{post.data.readTime}</span>
+      <span>老张</span>
+    </div>
+    <div class="article-content">
+      <Content />
+    </div>
+    <nav class="article-footer-nav">
+      <a href="/">← 回到首页</a>
+      <a href="/#topics">浏览全部主题 →</a>
+    </nav>
+  </article>
+</Page>

@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const props = Astro.props;
+---
+
+<Base {...props}>
+  <header class="header">
+    <div class="wrap header-inner">
+      <a class="brand" href="/">
+        <span class="brand-mark">老张</span>
+        <span class="brand-rule"></span>
+        <span class="brand-tag">纺织制造 · 数字化笔记</span>
+      </a>
+      <nav class="nav">
+        <a href="/#latest">文章</a>
+        <a href="/#topics">主题</a>
+        <a href="/about/">关于</a>
+        <a class="btn-subscribe" href="/#subscribe">订阅</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-mark">老张</div>
+          <div class="footer-tagline">纺织制造 · 数字化笔记</div>
+        </div>
+        <div class="footer-links">
+          <a href="/#latest">文章</a>
+          <a href="/#topics">主题</a>
+          <a href="/about/">关于</a>
+          <a href="/rss.xml">RSS</a>
+          <a href="mailto:hello@example.com">邮箱</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 老张 · 广东佛山 · 保留所有权利</span>
+        <span>所有笔记均为个人实践总结，欢迎交流与引用</span>
+      </div>
+    </div>
+  </footer>
+</Base>
